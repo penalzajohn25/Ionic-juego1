@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+        Adivina el número secreto
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label fixed>Número</ion-label>
+  <ion-input type="number" min="1" max="100" [(ngModel)]="num" [placeholder]="menPlace"></ion-input>
+  
+</ion-content>
