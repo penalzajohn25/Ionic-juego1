@@ -8,13 +8,15 @@
 
 <ion-content>
   <ion-list padding *ngIf="mayorMenor!='igual'">
+      <ion-label fixed>Tienes {{intentos}} para adivinar el número secreto</ion-label>
       <ion-label fixed>Número</ion-label>
     <ion-item>
-        <ion-input type="number" min="1" max="100" size="2" [(ngModel)]="num" [placeholder]="menPlace"></ion-input>
+        <ion-input type="number" min="1" max="10" size="2" [(ngModel)]="num" [placeholder]="menPlace"></ion-input>
     </ion-item>
 
-    <p>el número secreto {{ numberSecret }} numero ingresado es {{ mayorMenor }}</p>
-    <button ion-button block (click)="compruebaNumero()">Adivina</button>
+    <p>el número secreto es {{ mayorMenor }}</p>
+
+    <button *ngIf="intentos!=0" ion-button block (click)="compruebaNumero()">Adivina</button>
 
   </ion-list>
 
@@ -30,5 +32,15 @@
       </ion-card-content>
     </ion-card>
 
+
+    <ion-card *ngIf="intentos==0">
+        <ion-card-header>
+          ¡¡ Lo siento !!
+        </ion-card-header>
+        <ion-card-content>
+          has agotado tus intentos
+          <button  ion-button block (click)="reiniciar()">Reiniciar Juego</button>
+        </ion-card-content>
+      </ion-card>
 
 </ion-content>
