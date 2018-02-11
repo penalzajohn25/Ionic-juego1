@@ -6,11 +6,34 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  
- 
+   mayorMenor:string='...';
+   num:number;
+   menPlace="Introdusca un numero del 1 al 100";
+   numberSecret:number=this.numeroAleatorio(0,100);
 
   constructor(public navCtrl: NavController) {
-     let menPlace:string="Introdusca un numero del 1 al 100";
+     
+  }
+
+  numeroAleatorio(a,b){
+    return Math.round(Math.random() * (b-a)+parseInt(a));
+  }
+  
+  compruebaNumero(){
+    if(this.num){
+
+      if(this.num < this.numberSecret)
+         this.mayorMenor='menor';
+      else if(this.num > this.numberSecret)
+         this.mayorMenor='mayor';
+      else
+         this.mayorMenor='igual';
+
+    }
+  }
+ 
+  reiniciar(){
+    this.mayorMenor='...';
   }
 
 }

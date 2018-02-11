@@ -6,8 +6,29 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-label fixed>Número</ion-label>
-  <ion-input type="number" min="1" max="100" [(ngModel)]="num" [placeholder]="menPlace"></ion-input>
-  
+<ion-content>
+  <ion-list padding *ngIf="mayorMenor!='igual'">
+      <ion-label fixed>Número</ion-label>
+    <ion-item>
+        <ion-input type="number" min="1" max="100" size="2" [(ngModel)]="num" [placeholder]="menPlace"></ion-input>
+    </ion-item>
+
+    <p>el número secreto {{ numberSecret }} numero ingresado es {{ mayorMenor }}</p>
+    <button ion-button block (click)="compruebaNumero()">Adivina</button>
+
+  </ion-list>
+
+
+
+  <ion-card *ngIf="mayorMenor=='igual'">
+      <ion-card-header>
+        ¡¡ Felicitaciones !!
+      </ion-card-header>
+      <ion-card-content>
+        has acertado el número secreto es {{num}}
+        <button  ion-button block (click)="reiniciar()">Reiniciar Juego</button>
+      </ion-card-content>
+    </ion-card>
+
+
 </ion-content>
